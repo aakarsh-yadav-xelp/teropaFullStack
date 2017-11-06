@@ -4,7 +4,7 @@ export function setEntries(state, entries) {
   return state.set("entries", List(entries));
 }
 export function next(state) {
-  const entries = state.get("entries");
+  const entries = state.get("entries").concat(getWinners(state.get("vote")));
   if (entries.size === 1) {
     return state
       .remove("vote")
